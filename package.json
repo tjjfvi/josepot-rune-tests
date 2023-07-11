@@ -1,0 +1,25 @@
+{
+  "name": "runes-tests",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "esbuild src/main.ts --platform=node --bundle --external:rxjs-etc --external:rxjs-etc/* --external:rxjs --external:capi --outdir=build --target=esnext --format=esm --sourcemap",
+    "test": "npm run build && node --enable-source-maps ./build/main.js"
+  },
+  "type": "module",
+  "dependencies": {
+    "capi": "^0.1.0-gamma.1",
+    "rxjs": "^7.8.0",
+    "rxjs-etc": "^10.6.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "esbuild": "^0.17.17",
+    "prettier": "^2.8.7",
+    "typescript": "^5.1.6"
+  },
+  "prettier": {
+    "printWidth": 80,
+    "trailingComma": "all",
+    "semi": false
+  }
+}
