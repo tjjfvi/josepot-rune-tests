@@ -36,7 +36,11 @@ export default suite("vanilla", {
 
       nRunning++
       getBlockTime(hash)
-        .then((blockTime) => `${hash}-${blockTime}-${getBlockNumber(hash)}`)
+        .then((blockTime) => ({
+          hash,
+          blockTime,
+          blockNumber: getBlockNumber(hash),
+        }))
         .then((x) => {
           output(x)
           if (--nRunning === 0 && !isListening) {
@@ -64,7 +68,11 @@ export default suite("vanilla", {
 
       current = new AbortController()
       getBlockTime(hash, current.signal)
-        .then((blockTime) => `${hash}-${blockTime}-${getBlockNumber(hash)}`)
+        .then((blockTime) => ({
+          hash,
+          blockTime,
+          blockNumber: getBlockNumber(hash),
+        }))
         .then((x) => {
           output(x)
           if (!isListening) {

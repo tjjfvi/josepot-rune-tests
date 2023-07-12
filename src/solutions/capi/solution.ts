@@ -26,7 +26,6 @@ import { suite } from "@/api"
 export default suite("capi", {
   asTheyCome: ({ listenToHashes, getBlockNumber, getBlockTime, output }) => {
     const stopListening = listenToHashes((hash) => {
-      output(hash)
       if (hash === "h") {
         stopListening()
         output(null)

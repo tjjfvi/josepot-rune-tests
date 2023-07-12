@@ -37,7 +37,11 @@ const solveItWith =
         takeWhile((hash) => hash !== "h", true),
         merger((hash) =>
           getBlockTime$(hash).pipe(
-            map((blockTime) => `${hash}-${blockTime}-${getBlockNumber(hash)}`),
+            map((blockTime) => ({
+              hash,
+              blockTime,
+              blockNumber: getBlockNumber(hash),
+            })),
           ),
         ),
         endWith(null),

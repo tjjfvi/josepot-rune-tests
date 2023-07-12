@@ -5,5 +5,7 @@ export type TestFn = (cbs: {
   listenToHashes: CallbackCreator<string>
   getBlockNumber: (hash: string) => number
   getBlockTime: (hash: string, signal?: AbortSignal) => Promise<number>
-  output: (data: string | null) => void
+  output: (
+    data: { hash: string; blockNumber: number; blockTime: number } | null,
+  ) => void
 }) => void

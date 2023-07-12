@@ -143,8 +143,11 @@ export const suite = (suite: string, tests: Partial<Tests>) => () =>
           listenToHashes,
           getBlockNumber,
           getBlockTime,
-          output: (data: string | null) => {
-            if (data !== null) return values.push(data)
+          output: (data) => {
+            if (data !== null) {
+              const { hash, blockTime, blockNumber } = data
+              return values.push(`${hash}-${blockTime}-${blockNumber}`)
+            }
 
             const receivedValues = values.join(" ")
 
